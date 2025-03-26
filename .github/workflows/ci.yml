@@ -29,6 +29,11 @@ jobs:
           eval "$(ssh-agent -s)"
           ssh-add ~/.ssh/id_rsa
 
+      - name: Debug SSH Key
+        run: |
+          ls -lah ~/.ssh
+          file ~/.ssh/id_rsa
+          cat ~/.ssh/id_rsa | head -n 5
       # Step 4: Deploy to EC2 (Pull code, install dependencies, migrate, collectstatic, restart services)
       - name: Deploy to EC2
         run: |
