@@ -20,6 +20,7 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.EC2_PRIVATE }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
+          chmod 700 ~/.ssh
           ssh-keyscan -H 13.60.41.254 >> ~/.ssh/known_hosts  # EC2 Public IP
 
       # Step 3: Set up ssh-agent (optional but recommended for handling private keys)
