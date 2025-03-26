@@ -7,4 +7,6 @@ from rest_framework import status
 class TestApi(APIView):
     def get(self, request):
         print("ok----------")
-        return Response(status=status.HTTP_200_OK)
+        return Response(data={
+            "name": "fahad"
+        },status=status.HTTP_200_OK)
