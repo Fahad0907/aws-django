@@ -3,7 +3,7 @@ name: Deploy Django App
 on:
   push:
     branches:
-      - main  # Change to your deployment branch
+      - main # Change to your deployment branch
 
 jobs:
   deploy:
@@ -17,11 +17,11 @@ jobs:
       # Step 2: Set up SSH for EC2 access
       - name: Set up SSH
         run: |
-          mkdir -p ~/.ssh
+          # mkdir -p ~/.ssh
           echo "${{ secrets.EC2_PRIVATE }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           chmod 700 ~/.ssh
-          ssh-keyscan -H 13.60.41.254 >> ~/.ssh/known_hosts  # EC2 Public IP
+          ssh-keyscan -H 16.171.166.149 >> ~/.ssh/known_hosts  # EC2 Public IP
 
       # Step 3: Set up ssh-agent (optional but recommended for handling private keys)
       - name: Set up ssh-agent
@@ -37,7 +37,7 @@ jobs:
       # Step 4: Deploy to EC2 (Pull code, install dependencies, migrate, collectstatic, restart services)
       - name: Deploy to EC2
         run: |
-          ssh -i ~/.ssh/id_rsa ubuntu@13.60.41.254 << 'EOF'
+          ssh -i ~/.ssh/id_rsa ubuntu@16.171.166.149 << 'EOF'
             # Navigate to project folder
             cd /home/ubuntu/aws-django
 
