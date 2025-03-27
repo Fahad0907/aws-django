@@ -17,7 +17,7 @@ jobs:
       # Step 2: Set up SSH for EC2 access
       - name: Set up SSH
         run: |
-          # mkdir -p ~/.ssh
+          mkdir -p ~/.ssh
           echo "${{ secrets.EC2_PRIVATE }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           chmod 700 ~/.ssh
