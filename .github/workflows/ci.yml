@@ -21,7 +21,7 @@ jobs:
           echo "${{ secrets.EC2_PRIVATE }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           chmod 700 ~/.ssh
-          ssh-keyscan -H 13.60.41.254 >> ~/.ssh/known_hosts  # EC2 Public IP
+          ssh-keyscan -H 16.171.5.253 >> ~/.ssh/known_hosts  # EC2 Public IP
 
       # Step 3: Set up ssh-agent (optional but recommended for handling private keys)
       - name: Set up ssh-agent
@@ -34,10 +34,11 @@ jobs:
           ls -lah ~/.ssh
           file ~/.ssh/id_rsa
           cat ~/.ssh/id_rsa | head -n 5
+
       # Step 4: Deploy to EC2 (Pull code, install dependencies, migrate, collectstatic, restart services)
       - name: Deploy to EC2
         run: |
-          ssh -i ~/.ssh/id_rsa ubuntu@13.60.41.254 << 'EOF'
+          ssh -i ~/.ssh/id_rsa ubuntu@16.171.5.253 << 'EOF'
             # Navigate to project folder
             cd /home/ubuntu/aws-django
 

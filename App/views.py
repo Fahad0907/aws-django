@@ -8,5 +8,5 @@ class TestApi(APIView):
     def get(self, request):
         print("ok----------")
         return Response(data={
-            "name": "fahad"
+            "name": "fahadsssssssssss"
         },status=status.HTTP_200_OK)
