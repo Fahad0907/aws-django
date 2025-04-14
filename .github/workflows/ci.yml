@@ -60,6 +60,10 @@ jobs:
             # Restart Gunicorn to apply the new changes
             sudo systemctl restart gunicorn
 
+            sudo systemctl restart celery
+
+            sudo systemctl restart celery-beat
+
             # Restart Nginx (if applicable) to reflect any changes
             sudo systemctl restart nginx
           EOF
